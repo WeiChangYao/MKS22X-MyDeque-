@@ -16,12 +16,17 @@ public class MyDeque<E>{
     end = data.length;
     int size = initialCapacity;
   }
-
   public int size(){
     return size;
   }
-  /*
-  public String toString(){ }
+
+  public String toString(){
+    String str = "";
+    for (int i = 0; i < data.size; i++){
+      str+= data[i] + " ";
+    }
+  }
+ /*
   public void addFirst(E element){ }
   public void addLast(E element){ }
   public E removeFirst(){ }
