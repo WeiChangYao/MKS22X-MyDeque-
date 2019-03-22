@@ -6,7 +6,7 @@ public class MyDeque<E>{
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
-    end = data.length;
+    end = 0;
     size = 10;
   }
   public MyDeque(int initialCapacity){
@@ -26,10 +26,22 @@ public class MyDeque<E>{
       str+= data[i] + " ";
     }
   }
- /*
-  public void addFirst(E element){ }
-  public void addLast(E element){ }
-  public E removeFirst(){ }
+ 
+  public void addFirst(E element){
+    if(start == 0 && end!=size-1){
+      start = end+1;
+      data[start] = element;
+    }
+  }
+  public void addLast(E element){
+    if(end != size-1){
+      end++;
+      data[end]=element;
+    }
+  }
+  public E removeFirst(){
+
+  }
   public E removeLast(){ }
   public E getFirst(){ }
   public E getLast(){ }*/
