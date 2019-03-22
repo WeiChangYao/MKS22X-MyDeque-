@@ -20,19 +20,20 @@ public class MyDeque<E>{
     return size;
   }
 
-  public String toString(){
+  public String toString(){//ummmmm
     String str = "";
-    for (int i = 0; i < data.size; i++){
+    for (int i = start; i < data.size; i++){
       str+= data[i] + " ";
     }
+
   }
 
   public void addFirst(E element){
-    if(start == 0 && end!=size-1){
+    if(start == 0 && end!=start+1){
       start = size-1;
       data[start] = element;
     }
-    if(start!=0){
+    if(start!=0 && end!=start-1){
       start--;
       data[start] = element;
     }
@@ -48,6 +49,10 @@ public class MyDeque<E>{
     if(start != 0)
   }
   public E removeLast(){ }
-  public E getFirst(){ }
-  public E getLast(){ }*/
+  public E getFirst(){
+    return data[start];
+  }
+  public E getLast(){
+    return data[end];
+  }
 }
