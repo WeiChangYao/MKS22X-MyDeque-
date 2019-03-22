@@ -46,12 +46,14 @@ public class MyDeque<E>{
     }
   }
   public E removeFirst(){
+    E remove = data[start];
     start++;
-    return data[start];
+    return remove;
   }
   public E removeLast(){
+    E remove = data[end];
     end--;                //GOTTA BE CORRECT unless like there's no room. ^too
-    return data[last]
+    return remove;
   }
   public E getFirst(){
     return data[start];
