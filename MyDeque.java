@@ -26,12 +26,17 @@ public class MyDeque<E>{
       str+= data[i] + " ";
     }
   }
- 
+
   public void addFirst(E element){
     if(start == 0 && end!=size-1){
-      start = end+1;
+      start = size-1;
       data[start] = element;
     }
+    if(start!=0){
+      start--;
+      data[start] = element;
+    }
+    //else, resize and stuff?
   }
   public void addLast(E element){
     if(end != size-1){
@@ -40,7 +45,7 @@ public class MyDeque<E>{
     }
   }
   public E removeFirst(){
-
+    if(start != 0)
   }
   public E removeLast(){ }
   public E getFirst(){ }
