@@ -81,14 +81,38 @@ public class MyDeque<E>{
     }
   }
   public void addLast(E element){
-    if(end != size-1){
+    if(((front == 0 && end == size-1)|| 
+            front == end+1)){
+      System.out.println("no");
+      return;
+    }
+    if(front == -1){
+      front = 0;
+      end = 0;
+      data[front] = element;
+      return;
+    }
+    //if (end == size-1) ? end is last?
+    else{
       end++;
-      data[end]=element;
+      data[front] = element;
+      return;
     }
   }
   public E removeFirst(){
     E remove = data[start];
-    start++;
+    if(front == end){
+      front = -1;
+      end = -1;
+    }
+    else{
+      if(front = size-1){
+        front = 0;
+      }
+      else{
+        front++;
+      }
+    }
     return remove;
   }
   public E removeLast(){
