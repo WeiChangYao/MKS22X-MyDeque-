@@ -58,11 +58,27 @@ public class MyDeque<E>{
             front == end+1){
       resize(); //MAKE IT!!!
     }*/
+    if(((front == 0 && end == size-1)|| 
+            front == end+1)){
+      System.out.println("no");
+      return;
+    }
     if(front == -1){
       front = 0;
       end = 0;
+      data[front] = element;
+      return;
     }
-    //else, resize and stuff?
+    if(front == 0){
+      front = size-1;
+      data[front] = element;
+      return;
+    }
+    else{
+      front--;
+      data[front] = element;
+      return;
+    }
   }
   public void addLast(E element){
     if(end != size-1){
