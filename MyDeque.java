@@ -47,9 +47,9 @@ public class MyDeque<E>{
 
   public String toString(){//ummmmm
     if(size == 0) {
-      return "[]";
+      return "{}";
     }
-    String str = "";
+    String str = "{";
     int i = start;
     int j = end;
     while(i!=j){
@@ -63,7 +63,7 @@ public class MyDeque<E>{
           str+=data[i];
           i++;
         }
-        return str;
+        return str+"}";
       }
     }
     return "";
