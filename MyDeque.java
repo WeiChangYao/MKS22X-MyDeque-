@@ -45,14 +45,30 @@ public class MyDeque<E>{
     return size;
   }
 
-/*  public String toString(){//ummmmm
-    String str = "";
-    for (int i = start; i < data.size; i++){
-      str+= data[i] + " ";
+  public String toString(){//ummmmm
+    if(size == 0) {
+      return "[]";
     }
-
+    String str = "";
+    int i = start;
+    int j = end;
+    while(i!=j){
+      if(i>0&&i<size){
+        str+=data[i];
+        i++;
+      }
+      else{
+        i = 0;
+        while(i!=j){
+          str+=data[i];
+          i++;
+        }
+        return str;
+      }
+    }
+    return "";
   }
-*/
+
   public void addFirst(E element){
     /*if ((start == 0 && end == size-1)|| 
             start == end+1){
