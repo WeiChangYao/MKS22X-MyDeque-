@@ -5,15 +5,15 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
-    start = 0;
+    start = -1;
     end = 0;
     size = 10;
   }
   public MyDeque(int initialCapacity){
     @SuppressWarnings("unchecked")
     data = (E[])new Object[initialCapacity];
-    start = 0;
-    end = data.length;
+    start = -1;
+    end = 0;
     int size = initialCapacity;
   }
 
@@ -28,6 +28,18 @@ public class MyDeque<E>{
     MyDeque dek = new MyDeque();
     for(int
   }
+        
+ //////////////////////////////
+  public boolean isFull(){ 
+    return ((front == 0 && end == size-1)|| 
+            front == end+1); 
+  } 
+ /////////////////////////////
+  public boolean isEmpty(){ 
+    return (front == -1); 
+  } 
+ //////////////////////////////
+
 
   public int size(){
     return size;
@@ -42,13 +54,13 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
-    if(start == 0 && end!=start+1){
-      start = size-1;
-      data[start] = element;
-    }
-    if(start!=0 && end!=start-1){
-      start--;
-      data[start] = element;
+    /*if ((front == 0 && end == size-1)|| 
+            front == end+1){
+      resize(); //MAKE IT!!!
+    }*/
+    if(front == -1){
+      front = 0;
+      end = 0;
     }
     //else, resize and stuff?
   }
@@ -65,13 +77,13 @@ public class MyDeque<E>{
   }
   public E removeLast(){
     E remove = data[end];
-    end--;                //GOTTA BE CORRECT unless like there's no room. ^too
+    end--;                
     return remove;
   }
-  public E getFirst(){
+  public E getFirst(){//returns front
     return data[start];
   }
-  public E getLast(){
+  public E getLast(){//returns end
     return data[end];
   }
 }
