@@ -97,6 +97,7 @@ public class MyDeque<E>{
     }
   }
   public void addLast(E element){
+    //CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if(((start == 0 && end == size-1)|| 
             start == end+1)){
       System.out.println("no");
