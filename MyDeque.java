@@ -9,34 +9,34 @@ public class MyDeque<E>{
     end = 0;
     size = 10;
   }
+  @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
-    @SuppressWarnings("unchecked")
     data = (E[])new Object[initialCapacity];
     start = -1;
     end = 0;
     int size = initialCapacity;
   }
-
+/*
   public class Calculator{
       /*Evaluate a postfix expression stored in s.
        *Assume valid postfix notation, separated by spaces.
        */
-      public static double eval(String s){}
+ /*     public static double eval(String s){}
   }
 
   public static double eval(String s){
     MyDeque dek = new MyDeque();
     for(int
-  }
+  }*/
         
  //////////////////////////////
   public boolean isFull(){ 
-    return ((front == 0 && end == size-1)|| 
-            front == end+1); 
+    return ((start == 0 && end == size-1)|| 
+            start == end+1); 
   } 
  /////////////////////////////
   public boolean isEmpty(){ 
-    return (front == -1); 
+    return (start == -1); 
   } 
  //////////////////////////////
 
@@ -45,82 +45,93 @@ public class MyDeque<E>{
     return size;
   }
 
-  public String toString(){//ummmmm
+/*  public String toString(){//ummmmm
     String str = "";
     for (int i = start; i < data.size; i++){
       str+= data[i] + " ";
     }
 
   }
-
+*/
   public void addFirst(E element){
-    /*if ((front == 0 && end == size-1)|| 
-            front == end+1){
+    /*if ((start == 0 && end == size-1)|| 
+            start == end+1){
       resize(); //MAKE IT!!!
     }*/
-    if(((front == 0 && end == size-1)|| 
-            front == end+1)){
+    if(((start == 0 && end == size-1)|| 
+            start == end+1)){
       System.out.println("no");
       return;
     }
-    if(front == -1){
-      front = 0;
+    if(start == -1){
+      start = 0;
       end = 0;
-      data[front] = element;
+      data[start] = element;
       return;
     }
-    if(front == 0){
-      front = size-1;
-      data[front] = element;
+    if(start == 0){
+      start = size-1;
+      data[start] = element;
       return;
     }
     else{
-      front--;
-      data[front] = element;
+      start--;
+      data[start] = element;
       return;
     }
   }
   public void addLast(E element){
-    if(((front == 0 && end == size-1)|| 
-            front == end+1)){
+    if(((start == 0 && end == size-1)|| 
+            start == end+1)){
       System.out.println("no");
       return;
     }
-    if(front == -1){
-      front = 0;
+    if(start == -1){
+      start = 0;
       end = 0;
-      data[front] = element;
+      data[start] = element;
       return;
     }
     //if (end == size-1) ? end is last?
     else{
       end++;
-      data[front] = element;
+      data[start] = element;
       return;
     }
   }
   public E removeFirst(){
     E remove = data[start];
-    if(front == end){
-      front = -1;
+    if(start == end){
+      start = -1;
       end = -1;
     }
     else{
-      if(front = size-1){
-        front = 0;
+      if(start == size-1){
+        start = 0;
       }
       else{
-        front++;
+        start++;
       }
     }
     return remove;
   }
   public E removeLast(){
     E remove = data[end];
-    end--;                
+    if(start == end){
+      start = -1;
+      end = -1;
+    }    
+    else{
+      if(end == 0){
+        end = size-1;
+      }
+      else{
+        end--;
+      }
+    }
     return remove;
   }
-  public E getFirst(){//returns front
+  public E getFirst(){//returns start
     return data[start];
   }
   public E getLast(){//returns end
