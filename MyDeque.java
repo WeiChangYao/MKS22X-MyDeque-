@@ -20,15 +20,32 @@ public class MyDeque<E>{
     size = 0;
   }
   
-  /*public void resize(){
+  public void resize(){
     @SuppressWarnings("unchecked")
     E[] d2 = (E[])new Object[size2*2]; //double the size
     //copystuff over
-    for(int i = start; i > -1; i--){
-      d2.addFirst(removeFirst());
+    int newStart = 0;
+    if (start == 0){
+      for(int i = start; i < size2; i++){
+        d2[newStart] = data[i];
+        newStart++;
+      }
+    }
+    else{
+      for(int i = start; i < size2; i++){
+        d2[newStart] = data[i];
+        newStart++;
+      }
+      for(int i = 0; i < start; i++){
+        d2[newStart] = data[i];
+        newStart++;
+      }
     }
     data = d2; //makes data point at data2
-  }*/
+    size2 = size2*2;
+    start = 0;
+    end = size2-1;
+  }
 
 /*
   public class Calculator{
@@ -51,41 +68,9 @@ public class MyDeque<E>{
     return size2;
   }
 
-  /*public String toString(){//ummmmm
-    if(size2 == 0) {
-      return "[]";
-    }
-    String str = "[";
-    int i = start;
-    int i2 = start+1;
-    int j = end;
-    int j2 = end + 1;
-    while(i!=-1){
-        str+=data[i] +", "; //adds things from first to left
-        i--;
-    }
-    while(i2!=j+1){        //adds things right of first
-        str+=data[i2] +", ";
-        i2++;
-    }
-    while(j2!=size2+1){   //adds things from end to the right
-        str+=data[j2] +", ";
-        j2++;
-    }
-    return str;
-      /*else{
-        i = 0;
-        while(i!=j){
-          str+=data[i] +", ";
-          i++;
-        }
-        return str+"]";
-      }
-    return "";*/
-  //}
 
     public String toString(){//ummmmm
-    if(size2 == 0) {
+    if(size == 0) {
       return "{}";
     }
     String str = "{";
@@ -102,12 +87,11 @@ public class MyDeque<E>{
           str+=data[i];
           i++;
         }
-        return str+"}";
+        return str+data[j]+"}";
       }
     }
     return "";
   }
-
   
   public void addFirst(E element){
     /*if ((start == 0 && end == size2-1)|| 
