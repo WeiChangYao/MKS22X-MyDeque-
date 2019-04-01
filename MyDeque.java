@@ -1,3 +1,4 @@
+import java.util.*;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
@@ -117,6 +118,9 @@ public class MyDeque<E>{
     }
   }
   public E removeFirst(){
+    if (start == -1){
+      throw new NoSuchElementException();
+    }
     E remove = data[start];
     if(start == end){
       start = -1;
@@ -133,6 +137,9 @@ public class MyDeque<E>{
     return remove;
   }
   public E removeLast(){
+    if (start == -1){
+      throw new NoSuchElementException();
+    }
     E remove = data[end];
     if(start == end){
       start = -1;
@@ -149,9 +156,15 @@ public class MyDeque<E>{
     return remove;
   }
   public E getFirst(){//returns start
+    if (start == -1){
+      throw new NoSuchElementException();
+    }
     return data[start];
   }
   public E getLast(){//returns end
+    if (start == -1){
+      throw new NoSuchElementException();
+    }
     return data[end];
   }
 }
