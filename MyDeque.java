@@ -75,6 +75,9 @@ public class MyDeque<E>{
             start == end+1){
       resize(); //MAKE IT!!!
     }*/
+    if (element == null){
+      throw new NullPointerException();
+    }
     if(((start == 0 && end == size-1)|| 
             start == end+1)){
       System.out.println("no");
@@ -99,6 +102,9 @@ public class MyDeque<E>{
   }
   public void addLast(E element){
     //CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if (element == null){
+      throw new NullPointerException();
+    }
     if(((start == 0 && end == size-1)|| 
             start == end+1)){
       System.out.println("no");
