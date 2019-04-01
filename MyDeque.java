@@ -47,18 +47,15 @@ public class MyDeque<E>{
     start = 0;
   }
 
-/*
+
   public class Calculator{
       /*Evaluate a postfix expression stored in s.
        *Assume valid postfix notation, separated by spaces.
        */
- /*     public static double eval(String s){}
+      public  double eval(String s){
+        return 1.0;
+      }
   }
-
-  public static double eval(String s){
-    MyDeque dek = new MyDeque();
-    for(int
-  }*/
 
   public int size(){
     return size;  //amount of things
