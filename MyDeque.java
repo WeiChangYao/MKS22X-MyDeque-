@@ -6,9 +6,9 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
-    start = -1;
+    start = -1;//-1 for being empty
     end = 0;
-    size2 = 10;
+    size2 = 10;//size2 is the total capacity
     size = 0;
   }
   @SuppressWarnings("unchecked")
@@ -25,25 +25,25 @@ public class MyDeque<E>{
     E[] d2 = (E[])new Object[size2*2]; //double the size
     //copystuff over
     int newStart = 0;
-    if (start == 0){
-      for(int i = start; i < size2; i++){
+    if (start == 0){  //the start isn't in the other side
+      for(int i = start; i < size2; i++){ 
         d2[newStart] = data[i];
         newStart++;
       }
     }
-    else{
-      for(int i = start; i < size2; i++){
+    else{ //start is on the oter side
+      for(int i = start; i < size2; i++){ //from start to the end of array
         d2[newStart] = data[i];
         newStart++;
       }
-      for(int i = 0; i < start; i++){
+      for(int i = 0; i < start; i++){ //from index 0 to end
         d2[newStart] = data[i];
         newStart++;
       }
     }
     data = d2; //makes data point at data2
     end = size2-1;
-    size2 = size2*2;
+    size2 = size2*2; //double size
     start = 0;
   }
 
@@ -61,11 +61,11 @@ public class MyDeque<E>{
   }*/
 
   public int size(){
-    return size;
+    return size;  //amount of things
   }
 
   public int size2(){
-    return size2;
+    return size2; //capacity
   }
 
 
@@ -77,14 +77,14 @@ public class MyDeque<E>{
     int i = start;
     int j = end;
     while(i!=j){
-      if(i>0&&i<size2){
+      if(i>0&&i<size2){ //adds start to end of array to string
         str+=data[i];
         i++;
       }
       else{
         i = 0;
         while(i!=j){
-          str+=data[i];
+          str+=data[i]; //adds rest of stuff to string
           i++;
         }
         return str+data[j]+"}";
@@ -94,10 +94,6 @@ public class MyDeque<E>{
   }
   
   public void addFirst(E element){
-    /*if ((start == 0 && end == size2-1)|| 
-            start == end+1){
-      resize(); //MAKE IT!!!
-    }*/
     if (element == null){
       throw new NullPointerException();
     }
@@ -107,27 +103,26 @@ public class MyDeque<E>{
       resize();
     }
     if(start == -1){
-      start = 0;
+      start = 0; //not empty anymore, so changes it
       end = 0;
-      data[start] = element;
+      data[start] = element; //add
       size++;
       return;
     }
-    if(start == 0){
-      start = size2-1;
+    if(start == 0){ //not empty
+      start = size2-1; //add to the other side
       data[start] = element;
-      size++;
+      size++; 
       return;
     }
     else{
-      start--;
-      data[start] = element;
+      start--; //subtract from other side
+      data[start] = element; //add thing
       size++;
       return;
     }
   }
   public void addLast(E element){
-    //CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (element == null){
         throw new NullPointerException();
     }
@@ -135,16 +130,15 @@ public class MyDeque<E>{
             start == end+1)){
       resize();
     }
-    if(start == -1){
+    if(start == -1){ //not empty anymore
       start = 0;
       end = 0;
       data[end] = element;
       size++;
       return;
     }
-    //if (end == size2-1) ? end is last?
     else{
-      end++;
+      end++; //keep adding right
       data[end] = element;
       size++;
       return;
@@ -155,8 +149,8 @@ public class MyDeque<E>{
       throw new NoSuchElementException();
     }
     E remove = data[start];
-    if(start == end){
-      start = -1;
+    if(start == end){ //this makes it empty
+      start = -1;     //start is -1 again
       end = -1;
       size--;
     }
@@ -166,7 +160,7 @@ public class MyDeque<E>{
         size--;
       }
       else{
-        size--;
+        size--; 
         start++;
       }
     }
