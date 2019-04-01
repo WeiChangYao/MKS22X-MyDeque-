@@ -122,14 +122,14 @@ public class MyDeque<E>{
     if(start == -1){
       start = 0;
       end = 0;
-      data[start] = element;
+      data[end] = element;
       size++;
       return;
     }
     //if (end == size2-1) ? end is last?
     else{
       end++;
-      data[start] = element;
+      data[end] = element;
       size++;
       return;
     }
