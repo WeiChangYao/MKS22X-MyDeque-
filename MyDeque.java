@@ -19,6 +19,17 @@ public class MyDeque<E>{
     size2 = initialCapacity;
     size = 0;
   }
+  
+  /*public void resize(){
+    @SuppressWarnings("unchecked")
+    E[] d2 = (E[])new Object[size2*2]; //double the size
+    //copystuff over
+    for(int i = start; i > -1; i--){
+      d2.addFirst(removeFirst());
+    }
+    data = d2; //makes data point at data2
+  }*/
+
 /*
   public class Calculator{
       /*Evaluate a postfix expression stored in s.
@@ -31,17 +42,6 @@ public class MyDeque<E>{
     MyDeque dek = new MyDeque();
     for(int
   }*/
-        
- //////////////////////////////
-  public boolean isFull(){ 
-    return ((start == 0 && end == size2-1)|| 
-            start == end+1); 
-  } 
- /////////////////////////////
-  public boolean isEmpty(){ 
-    return (start == -1); 
-  } 
- //////////////////////////////
 
   public int size(){
     return size;
@@ -51,7 +51,40 @@ public class MyDeque<E>{
     return size2;
   }
 
-  public String toString(){//ummmmm
+  /*public String toString(){//ummmmm
+    if(size2 == 0) {
+      return "[]";
+    }
+    String str = "[";
+    int i = start;
+    int i2 = start+1;
+    int j = end;
+    int j2 = end + 1;
+    while(i!=-1){
+        str+=data[i] +", "; //adds things from first to left
+        i--;
+    }
+    while(i2!=j+1){        //adds things right of first
+        str+=data[i2] +", ";
+        i2++;
+    }
+    while(j2!=size2+1){   //adds things from end to the right
+        str+=data[j2] +", ";
+        j2++;
+    }
+    return str;
+      /*else{
+        i = 0;
+        while(i!=j){
+          str+=data[i] +", ";
+          i++;
+        }
+        return str+"]";
+      }
+    return "";*/
+  //}
+
+    public String toString(){//ummmmm
     if(size2 == 0) {
       return "{}";
     }
@@ -75,6 +108,7 @@ public class MyDeque<E>{
     return "";
   }
 
+  
   public void addFirst(E element){
     /*if ((start == 0 && end == size2-1)|| 
             start == end+1){
