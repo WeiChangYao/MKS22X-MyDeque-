@@ -42,9 +42,9 @@ public class MyDeque<E>{
       }
     }
     data = d2; //makes data point at data2
+    end = size2-1;
     size2 = size2*2;
     start = 0;
-    end = size2-1;
   }
 
 /*
@@ -104,8 +104,7 @@ public class MyDeque<E>{
     
     if(((start == 0 && end == size2-1)|| 
             start == end+1)){
-      System.out.println("no");
-      return;
+      resize();
     }
     if(start == -1){
       start = 0;
@@ -130,12 +129,11 @@ public class MyDeque<E>{
   public void addLast(E element){
     //CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (element == null){
-      throw new NullPointerException();
+        throw new NullPointerException();
     }
     if(((start == 0 && end == size2-1)|| 
             start == end+1)){
-      System.out.println("no");
-      return;
+      resize();
     }
     if(start == -1){
       start = 0;
